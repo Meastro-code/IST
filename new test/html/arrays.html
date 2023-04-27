@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Arrays</title>
+  </head>
+  <body>
+    <script>
+      //Array created with the array constructor
+      const arrayConstructor = new Array(1, 2, 3);
+      console.log(arrayConstructor);
+
+      //Literal array
+      const literalArray = [1, 2, 3];
+      console.log(literalArray);
+
+      //Adding an element at the end of an array using push
+      const fruits = ["Apple", "Banana", "Cherry"];
+      fruits.push("Mango");
+      console.log(fruits);
+
+      //Adding an element at a specific index in an array using slice
+      const numbers = [1,2,4,5];
+      const index = 2;
+      const newNumbers = [
+        ...numbers.slice(0,index),
+        3,
+        ...numbers.slice(index),
+      ]
+      console.log(newNumbers);
+
+      //Adding an element at a specific index in an array using splice
+      const num = [1,2,4,5];
+      num.splice(2,0,3);
+      console.log(num);
+    </script>
+  </body>
+</html>
