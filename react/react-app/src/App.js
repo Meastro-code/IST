@@ -8,6 +8,7 @@ import MyMsg from './components/mymsg.js';
 // import Server from './components/server.js';
 import FunctionalComponent from './components/functioncounter.js';
 import ConditionalRendering from './components/conditionalrendering.js';
+import Maps from './components/maps.js';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <MyMsg />
       <FunctionalComponent />
       <ConditionalRendering />
+      <Maps />
     </div>
   );
 }
