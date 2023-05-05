@@ -1,29 +1,32 @@
-import React, {useState} from 'react';
+import io from "socket.io-client"
 
 function API(){
-    const [greeting, setGreeting] = useState('');
+    var socket = io('http://localhost:3000');
 
-    const fetchData = async()=>{
-        const response = await fetch("/api/hello-world");
-        const data = await response.json();
-        setGreeting(data.message);
-    };
+    var messages = document.getElementById('messages');
+    var form = document.getElementById('form');
+    var input = document.getElementById('input');
 
-    const sendGreeting =  async()=>{
-        const response =  await fetch("/api/hello-world",{
-            method: "POST",
-            body: JSON.stringify({greeting}),
-            headers: {"Content-Type": "application/json"}
-        });
-        const data = await response.json();
-        alert(data.message);
-    }
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (input.value) {
+        socket.emit('chat message', input.value);
+        input.value = '';
+      }
+    });
+
+    socket.on('chat message', function(msg) {
+      var item = document.createElement('li');
+      item.textContent = msg;
+      messages.appendChild(item);
+      window.scrollTo(0, document.body.scrollHeight);
+    });
     return(
         <div>
-            <button onClick={fetchData}>Get Hello World</button>
-            <p>{greeting}</p>
-            <input type="text" value={greeting} />
-            <button onClick={sendGreeting}>Send Greeting</button>
+            <ul id="messages"></ul>
+            <form id="form" action="">
+            <input id="input" autocomplete="off" /><button>Send</button>
+            </form>
         </div>
     );
 }

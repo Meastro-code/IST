@@ -2,7 +2,13 @@ import './App.css';
 import Message from './components/message';
 import Sample from './components/sample';
 import Counter from './components/counter';
-import API from './components/api';
+// import API from './components/api';
+import ConsMsg from './components/consmsg.js';
+import MyMsg from './components/mymsg.js';
+// import Server from './components/server.js';
+import FunctionalComponent from './components/functioncounter.js';
+import ConditionalRendering from './components/conditionalrendering.js';
+
 
 function App() {
   return (
@@ -10,7 +16,12 @@ function App() {
       <Message />
       <Sample name="Steve" />
       <Counter />
-      <API />
+      {/* <API /> */}
+      {/* <Server/> */}
+      <ConsMsg />
+      <MyMsg />
+      <FunctionalComponent />
+      <ConditionalRendering />
     </div>
   );
 }
