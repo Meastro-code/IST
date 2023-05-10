@@ -1,34 +1,37 @@
-import io from "socket.io-client"
 
-function API(){
-    var socket = io('http://localhost:3000');
+import "../App.css";
+import { useState } from "react";
+import Chat from "./chat.js";
+import LoginDialog from "./logindialog.js";
 
-    var messages = document.getElementById('messages');
-    var form = document.getElementById('form');
-    var input = document.getElementById('input');
+function App() {
+ const [nickname, setNickname] = useState("");
+ const [loggedIn, setLoggedIn] = useState(false);
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      if (input.value) {
-        socket.emit('chat message', input.value);
-        input.value = '';
-      }
-    });
+ const handleNicknameChange = (event) => {
+   setNickname(event.target.value.trim());
+ };
 
-    socket.on('chat message', function(msg) {
-      var item = document.createElement('li');
-      item.textContent = msg;
-      messages.appendChild(item);
-      window.scrollTo(0, document.body.scrollHeight);
-    });
-    return(
-        <div>
-            <ul id="messages"></ul>
-            <form id="form" action="">
-            <input id="input" autocomplete="off" /><button>Send</button>
-            </form>
-        </div>
-    );
+ const handleNicknameSubmit = (e) => {
+   if (!nickname.length) return;
+
+   e.preventDefault();
+
+   setLoggedIn(true);
+ };
+
+ return (
+   <div className="main-div">
+     {!loggedIn ? (
+       <LoginDialog
+         nicknameChange={handleNicknameChange}
+         nicknameSubmit={handleNicknameSubmit}
+       />
+     ) : (
+       <Chat nickname={nickname} />
+     )}
+   </div>
+ );
 }
 
-export default API;
+export default App;
