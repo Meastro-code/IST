@@ -11,3 +11,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App{
+  padding-top: 1rem;
+  width:70%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.navbar{
+  border-bottom: 1px solid grey;
+}
+
+.navbar h2{
+  color:blue;
+}
+
+.links a{
+  text-decoration: none;
+  margin:1rem;
+}
+
+.todoItem{
+  padding:10px 16px;
+  margin: 20px 0;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.todoItem:hover{
+  border-bottom: 2px solid #c5c2c2;
+}
+
+.todoItem h4{
+  float:left;
+}
+
+.todolist{
+  margin-top:5rem;
+}
+
+
