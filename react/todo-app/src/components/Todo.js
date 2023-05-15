@@ -1,10 +1,13 @@
 import Button from 'react-bootstrap/Button'
-const Todo = ({item})=>{
+const Todo = ({item,todoList,setTodoList})=>{
+    const deleteTodo =()=>{
+        setTodoList(todoList.filter((todo)=>todo.id !==  item.id));
+    }
     return(
     <div>
         <div className="todoItem">
-            <h4>{item}</h4>
-            <Button className="mt-5" variant="danger" type="submit">done</Button>
+            <h4>{item.name}</h4>
+            <Button onClick={deleteTodo} className="mt-5" variant="danger" type="submit">done</Button>
         </div>
     </div>);
 }
