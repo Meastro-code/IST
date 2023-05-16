@@ -4,23 +4,28 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import TodoForm from './components/TodoForm.js';
 import MyTodoList from './components/MyTodoList.js';
 import {useState} from 'react';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 function App() {
   const [todo,setTodo] = useState("");
   const [todoList,setTodoList] = useState([]);
   return (
-    <div className="App">
-      <Navbar />
+    <Router>
+       <div className="App">
+      <Navbar /> 
       <div className="content">
-        <TodoForm
+      <Routes>
+        <Route exact path="/" element={<MyTodoList setTodoList={setTodoList} todoList={todoList}/>}/> 
+        <Route path="/TodoForm" element={<TodoForm
           todo={todo}
           setTodo={setTodo}
           todoList={todoList}
           setTodoList={setTodoList}
-        />
-        <MyTodoList setTodoList={setTodoList} todoList={todoList}/>
+        />}/>
+      </Routes>
       </div>
     </div>
+    </Router>
   );
 }
 

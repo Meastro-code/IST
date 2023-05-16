@@ -12,6 +12,7 @@ import shortid from 'shortid';
         event.preventDefault();
         setTodoList([...todoList,{name:todo,id:shortid.generate()}]);
         console.log(todoList);
+        setTodo("");
     }
 return(
     <div>

@@ -7,7 +7,7 @@ const Todo = ({item,todoList,setTodoList})=>{
     <div>
         <div className="todoItem">
             <h4>{item.name}</h4>
-            <Button onClick={deleteTodo} className="mt-5" variant="danger" type="submit">done</Button>
+            <Button onClick={deleteTodo} variant="danger" type="submit">done</Button>
         </div>
     </div>);
 }
