@@ -37,7 +37,7 @@ function Chat({ nickname }) {
    } else if (channel) {
      initiateSocket(channel, nickname);
    }
- }, [channel]);
+ }, [channel, nickname, prevChannel]);
 
  useEffect(() => {
    setMessages([]);
